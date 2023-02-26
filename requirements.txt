@@ -1,0 +1,4 @@
+node.js
+discord.js
+node-schedule
+moment-timezone
