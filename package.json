@@ -14,7 +14,9 @@
   },
   "devDependencies": {
     "discord.js": "^14.12.1",
-    "eslint": "^8.35.0"
+    "eslint": "^8.35.0",
+    "moment-timezone": "^0.5.43",
+    "node-schedule": "^2.1.1"
   },
   "engines": {
     "npm": "10.2.0",
