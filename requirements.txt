@@ -1,4 +1,3 @@
-npm install discord.js
 node.js
 discord.js
 node-schedule
