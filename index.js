@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const express = require('express'); // Add the Express module
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
-
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -15,6 +15,18 @@ for (const file of commandFiles) {
 	const command = require(filePath);
 	client.commands.set(command.data.name, command);
 }
+
+const app = express(); // Create an Express app
+
+app.get('/', (req, res) => {
+  res.send('Your bot is up and running!'); // Replace this with your bot's response
+});
+
+const PORT = process.env.PORT || 3000; // Use the dynamic Heroku port or a default port
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 client.once(Events.ClientReady, () => {
 	console.log(`Ready! Logged in as ${client.user.tag}`);
