@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const express = require('express'); // Import Express
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
-
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -37,6 +37,14 @@ client.on(Events.InteractionCreate, async interaction => {
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 	}
+});
+
+// Create an Express app and bind it to the specified port (process.env.PORT or a fallback port like 3000)
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+	console.log(`Server is running on port ${PORT}`);
 });
 
 client.login(token);
