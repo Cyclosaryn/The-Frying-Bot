@@ -41,7 +41,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 // Create an Express app and bind it to the specified port (process.env.PORT or a fallback port like 3000)
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
