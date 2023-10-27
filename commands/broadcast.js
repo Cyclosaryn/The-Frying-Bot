@@ -74,7 +74,7 @@ module.exports = {
       await channel.send({ embeds: [embed] });
 
       if (mentionToSend) {
-        await channel.send(`Hey, ${mention} dit bericht hier boven is bedoeld voor jouw!`);
+        await channel.send(`Hey, ${mention} dit bericht hier boven is bedoeld voor jou!`);
       }
 
       // Remove the broadcast message from the JSON file
