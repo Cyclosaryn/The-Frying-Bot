@@ -4,11 +4,7 @@
   "description": "EventsBot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start-pm2": "pm2 start index.js",
-    "setup-pm2": "pm2 startup",
-    "stop-pm2": "pm2 stop index.js",
-    "delete-pm2": "pm2 delete yindex.js"
+    "start": "node index.js"
   },  
   "keywords": [],
   "author": "Cyclosaryn",
@@ -17,12 +13,10 @@
     "discord.js": "^14.7.1",
     "express": "^4.18.2",
     "moment-timezone": "^0.5.41",
-    "node-schedule": "^2.1.1",
-    "pm2": "^5.3.0"
+    "node-schedule": "^2.1.1"
   },
   "devDependencies": {
-    "eslint": "^8.35.0",
-    "pm2": "^5.3.0"
+    "eslint": "^8.35.0"
   },
   "engines": {
     "npm": "10.2.0",
