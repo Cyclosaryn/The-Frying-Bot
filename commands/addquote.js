@@ -23,7 +23,7 @@ module.exports = {
     const date = interaction.options.getString('date'); // get the value of the date option
 
     // read the quotes from the JSON file
-    const data = fs.readFileSync('quotes.json', 'utf8');
+    const data = fs.readFileSync('./quotes.json', 'utf8');
     const quotes = JSON.parse(data);
 
     // create a new quote object
@@ -36,7 +36,7 @@ module.exports = {
     quotes.push(newQuote);
 
     // write the updated quotes back to the file
-    fs.writeFileSync('quotes.json', JSON.stringify(quotes));
+    fs.writeFileSync('./quotes.json', JSON.stringify(quotes));
 
     // reply with a confirmation message
     let confirmationMessage = `Het citaat "${quote}" door ${author.tag}`;
