@@ -5,7 +5,7 @@ const schedule = require('node-schedule');
 const moment = require('moment-timezone');
 const fs = require('fs');
 
-const SCHEDULED_MESSAGES_FILE = 'planned.json';
+const SCHEDULED_MESSAGES_FILE = './planned.json';
 
 module.exports = {
   data: new SlashCommandBuilder()
