@@ -41,10 +41,10 @@ client.on(Events.InteractionCreate, async interaction => {
 
 // Create an Express app and bind it to the specified port (process.env.PORT or a fallback port like 3000)
 const app = express();
-const PORT = process.env.PORT || 8080;
+const WEBSITES_PORT = process.env.WEBSITES_PORT || 8080;
 
-app.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}`); // lets see if this works on azure
+app.listen(WEBSITES_PORT, () => {
+	console.log(`Server is running on port ${WEBSITES_PORT}`); // lets see if this works on azure
 });
 
 client.login(token);
