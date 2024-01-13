@@ -47,4 +47,10 @@ app.listen(WEBSITES_PORT, () => {
 	console.log(`Server is running on port ${WEBSITES_PORT}`); // lets see if this works on azure
 });
 
+var http = require('http')
+http.createServer(function (req, res) {
+	res.write("I'm alive! Yay!"); 
+	res.end(); //end the response
+  }).listen(WEBSITES_PORT);
+
 client.login(token);
