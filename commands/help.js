@@ -16,6 +16,10 @@ module.exports = {
 			    { name: '/loten', value: 'Kiest een willekeurig persoon uit een lijst van genoemde personen.' },
 			    { name: '/quote', value: 'Geeft het citaat van de dag.'},
 			    { name: '/addquote', value: 'Voegt een citaat toe aan de lijst van citaten.'},
+				{ name: '/listquotes', value: 'Laat een lijst van alle quotes zien.'},
+				{ name: '/removequote', value: 'Verwijdert de geselecteerde index uit de lijst met quotes.'},
+				{ name: '/listbroadcast', value: 'Laat een lijst van alle broadcasts zien.'},
+				{ name: '/removebroadcast', value: 'Verwijdert de geselecteerde index uit de lijst met broadcasts.'},
             )
             .setTimestamp()
 			.setFooter({ text: '© The Frying Bot by Cyclosarin', iconURL: 'https://i.ibb.co/mCJFKrH/Discord-Picture.jpg' });
