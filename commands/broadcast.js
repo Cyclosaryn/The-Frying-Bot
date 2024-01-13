@@ -54,8 +54,6 @@ module.exports = {
       return; // exit early
     }
 
-    const confirmationMessage = `Je bericht wordt verzonden op ${day}/${month}/${year} om ${hour}:${minute} in ${channel}.`;
-
     let messageToSend = message;
     let mentionToSend = '';
 
@@ -89,9 +87,23 @@ module.exports = {
     });
 
     // Reply with confirmation message
-    await interaction.reply(`Je bericht wordt verzonden op ${broadcastDate.format('DD-MM-YYYY HH:mm:ss')} in ${channel}.`);
+    await interaction.reply(`Je bericht wordt verzonden op ${broadcastDate.format('DD-MM-YYYY HH:mm:ss')} in <#${channel.id}>.`);
+  
+    const broadcastJSON = fs.readFileSync(SCHEDULED_MESSAGES_FILE, 'utf-8');
 
-    // Store the broadcast message in the JSON file
+    let scheduledMessages;
+    try {
+      scheduledMessages = JSON.parse(broadcastJSON);
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      scheduledMessages = []; // Initialize as an empty array if parsing fails
+    }
+
+    // Ensure scheduledMessages is an array
+    if (!Array.isArray(scheduledMessages)) {
+      scheduledMessages = [];
+    }
+
     const broadcastData = {
       message,
       channel: channel.id,
@@ -99,9 +111,9 @@ module.exports = {
       time: time,
       mention: mention ? mention.id : null
     };
-    const broadcastJSON = fs.readFileSync(SCHEDULED_MESSAGES_FILE);
-    let scheduledMessages = JSON.parse(broadcastJSON);
+
     scheduledMessages.push(broadcastData);
     fs.writeFileSync(SCHEDULED_MESSAGES_FILE, JSON.stringify(scheduledMessages));
-  }
+
+      }
 };
