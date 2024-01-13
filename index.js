@@ -41,7 +41,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 // Create an Express app and bind it to the specified port (process.env.PORT or a fallback port like 3000)
 const app = express();
-const WEBSITES_PORT = process.env.PORT || 8080;
+const WEBSITES_PORT = process.env.WEBSITES_PORT || 8080;
 
 app.get('/', (req, res) => {
     res.send("I'm alive! Yay!");
