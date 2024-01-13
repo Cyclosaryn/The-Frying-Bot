@@ -4,6 +4,7 @@
   "description": "EventsBot",
   "main": "index.js",
   "scripts": {
+    "prestart": "node deploy-commands.js",
     "start": "node index.js"
   },  
   "keywords": [],
