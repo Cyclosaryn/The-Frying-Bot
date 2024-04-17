@@ -1,36 +1,34 @@
 const { REST, Routes } = require('discord.js');
-const { clientId, guildId, token } = require('./config.json');
+const { clientId, guildIds, token } = require('./config.json');
 const fs = require('fs');
 const path = require('path');
 
 const commands = [];
-// Grab all the command files from the commands directory you created earlier
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
-// Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
+// Load commands
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	commands.push(command.data.toJSON());
+    const command = require(`./commands/${file}`);
+    commands.push(command.data.toJSON());
 }
 
-// Construct and prepare an instance of the REST module
 const rest = new REST({ version: '10' }).setToken(token);
 
-// and deploy your commands!
+// Deploy commands for each guild
 (async () => {
-	try {
-		console.log(`Started refreshing ${commands.length} application (/) commands.`);
+    for (const guildId of guildIds) {
+        try {
+            console.log(`Started refreshing ${commands.length} application (/) commands for guild ${guildId}.`);
 
-		// The put method is used to fully refresh all commands in the guild with the current set
-		const data = await rest.put(
-			Routes.applicationGuildCommands(clientId, guildId),
-			{ body: commands },
-		);
+            const data = await rest.put(
+                Routes.applicationGuildCommands(clientId, guildId),
+                { body: commands }
+            );
 
-		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-	} catch (error) {
-		// And of course, make sure you catch and log any errors!
-		console.error(error);
-	}
+            console.log(`Successfully reloaded ${data.length} application (/) commands for guild ${guildId}.`);
+        } catch (error) {
+            console.error(`Failed to deploy commands for guild ${guildId}:`, error);
+        }
+    }
 })();
