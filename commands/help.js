@@ -20,6 +20,10 @@ module.exports = {
 				{ name: '/removequote', value: 'Verwijdert de geselecteerde index uit de lijst met quotes.'},
 				{ name: '/listbroadcast', value: 'Laat een lijst van alle broadcasts zien.'},
 				{ name: '/removebroadcast', value: 'Verwijdert de geselecteerde index uit de lijst met broadcasts.'},
+				{ name: '/setupganzenbord', value: 'Setup een nieuw ganzenbord spel vanuit een Excel bestand.'},
+				{ name: '/joinganzenbord', value: 'Voeg jezelf toe aan het huidige Ganzenbord spel.'},
+				{ name: '/startganzenbord', value: 'Starts het Ganzenbord spel.'},
+				{ name: '/roll', value: 'Rol een dobbelsteen om te bewegen over het Ganzenbord.'},
             )
             .setTimestamp()
 			.setFooter({ text: '© The Frying Bot by Cyclosarin', iconURL: 'https://i.ibb.co/mCJFKrH/Discord-Picture.jpg' });

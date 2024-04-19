@@ -6,10 +6,10 @@ const fetch = require('node-fetch'); // Ensure you have node-fetch installed for
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('setupganzenbord')
-    .setDescription('Set up a new game board from an Excel file')
+    .setDescription('Setup een nieuw ganzenbord spel vanuit een Excel bestand')
     .addAttachmentOption(option =>
       option.setName('board')
-      .setDescription('Upload an Excel file with the board setup')
+      .setDescription('Upload een Excel bestand met het spelbord configuratie')
       .setRequired(true)),
   
   async execute(interaction) {
@@ -26,7 +26,7 @@ module.exports = {
 
       // Validate required columns
       if (!json.every(row => 'Square' in row && 'Mission' in row && 'Move' in row)) {
-        await interaction.reply('The Excel file is missing one or more required columns: Square, Mission, Move.');
+        await interaction.reply('Het excel bestand moet de kolommen "Square", "Mission" en "Move" bevatten. Probeer het opnieuw.');
         return;
       }
 
@@ -48,10 +48,10 @@ module.exports = {
       // Write to a game configuration file
       await fs.writeFile('./game.json', JSON.stringify(gameData), 'utf8');
 
-      await interaction.reply('Game board has been set up successfully and is ready for players to join!');
+      await interaction.reply('Het spelbord is succesvol ingesteld! Gebruik `/joinganzenbord` om mee te doen.');
     } catch (error) {
       console.error(error);
-      await interaction.reply('An error occurred while setting up the game. Please try again.');
+      await interaction.reply('Er is een fout opgetreden bij het instellen van het spelbord. Probeer het opnieuw.');
     }
   },
 };
