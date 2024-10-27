@@ -4,29 +4,19 @@ const { EmbedBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Laat een lijst zien met alle beschikbare commando\'s.'),
+		.setDescription('Shows a list with all available commands.'),
 	async execute(interaction) {
 		const embed = new EmbedBuilder()
             .setColor(0x0099FF)
 			.setTitle('Lijst van commando\'s')
             .setAuthor({ name: 'Cyclosarin', iconURL: 'https://i.ibb.co/mCJFKrH/Discord-Picture.jpg', url: 'https://discord.com/users/269195416963121152' })
-			.setDescription('Hieronder vind je een lijst met alle beschikbare commando\'s.')
+			.setDescription('This is a list with all currently available commands.')
 			.addFields(
-                { name: '/broadcast', value: 'Stuurt een bericht naar een kanaal op een specifieke datum en tijd.' },
-			    { name: '/loten', value: 'Kiest een willekeurig persoon uit een lijst van genoemde personen.' },
-			    { name: '/quote', value: 'Geeft het citaat van de dag.'},
-			    { name: '/addquote', value: 'Voegt een citaat toe aan de lijst van citaten.'},
-				{ name: '/listquotes', value: 'Laat een lijst van alle quotes zien.'},
-				{ name: '/removequote', value: 'Verwijdert de geselecteerde index uit de lijst met quotes.'},
-				{ name: '/listbroadcast', value: 'Laat een lijst van alle broadcasts zien.'},
-				{ name: '/removebroadcast', value: 'Verwijdert de geselecteerde index uit de lijst met broadcasts.'},
-				{ name: '/setupganzenbord', value: 'Setup een nieuw ganzenbord spel vanuit een Excel bestand.'},
-				{ name: '/joinganzenbord', value: 'Voeg jezelf toe aan het huidige Ganzenbord spel.'},
-				{ name: '/startganzenbord', value: 'Starts het Ganzenbord spel.'},
-				{ name: '/roll', value: 'Rol een dobbelsteen om te bewegen over het Ganzenbord.'},
+                { name: '/playstream', value: 'Allows to set a voice channel and a stream to play that stream in.' },
+				{ name: '/help', value: 'Shows this list' },
             )
             .setTimestamp()
-			.setFooter({ text: '© The Frying Bot by Cyclosarin', iconURL: 'https://i.ibb.co/mCJFKrH/Discord-Picture.jpg' });
+			.setFooter({ text: '© 🎵BLT - MusicBot🎵 by Cyclosarin', iconURL: 'https://cdn.discordapp.com/app-icons/1195694045519945748/29e47d0d61763734c3118312cf44f516.webp?size=96' });
 
 		await interaction.reply({ embeds: [embed] });
 	},

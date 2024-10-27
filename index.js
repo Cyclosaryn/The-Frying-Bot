@@ -4,7 +4,13 @@ const express = require('express'); // Import Express
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+// Add GUILD_VOICE_STATES to the intents
+const client = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildVoiceStates, // Required for voice functionality
+	],
+});
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
@@ -44,11 +50,11 @@ const app = express();
 const WEBSITES_PORT = process.env.WEBSITES_PORT || 8080;
 
 app.get('/', (req, res) => {
-    res.send("I'm alive! Yay!");
+	res.send("I'm alive! Yay!");
 });
 
 app.listen(WEBSITES_PORT, () => {
-    console.log(`Server is running on port ${WEBSITES_PORT}`);
+	console.log(`Server is running on port ${WEBSITES_PORT}`);
 });
 
 client.login(token);
