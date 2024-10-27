@@ -52,6 +52,18 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
       
+      - name: Wait for any active deployment to complete
+        run: |
+          count=0
+          while [[ $(curl -s -o /dev/null -w "%{http_code}" https://tfd-bot.scm.azurewebsites.net/api/deployments/active) -eq 200 ]] && [[ $count -lt 10 ]]; do
+            echo "Waiting for active deployment to finish..."
+            sleep 30
+            ((count++))
+          done
+
+      - name: Add delay before deployment
+        run: sleep 60  # waits for 60 seconds
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
