@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express'); // Import Express
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
-const { token } = require('./config.json');
+const token = process.env.DISCORD_TOKEN;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
